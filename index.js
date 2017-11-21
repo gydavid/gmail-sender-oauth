@@ -16,7 +16,7 @@ exports.send = function (token, params, callback) {
         var gmail = google.gmail('v1');
         var headers = [];
 
-        headers.push('From: <' + params.from + '>');
+        headers.push('From: ' + params.from);
         headers.push('To: ' + params.to);
         headers.push('Content-type: text/html;charset=iso-8859-1');
         headers.push('MIME-Version: 1.0');
@@ -47,5 +47,3 @@ exports.send = function (token, params, callback) {
         });
     });
 };
-
-
