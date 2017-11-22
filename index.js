@@ -20,7 +20,7 @@ exports.send = function (token, params, callback) {
         headers.push('To: ' + params.to);
         headers.push('Content-Type: text/html;charset=UTF-8');
         headers.push('MIME-Version: 1.0');
-        headers.push('Subject: ' + params.subject);
+        headers.push('Subject: =?utf-8?b?' + new Buffer(params.subject).toString('base64') + '?=');
         headers.push('');
         headers.push(params.body);
 
