@@ -24,6 +24,14 @@ exports.send = function (token, params, callback) {
         headers.push('');
         headers.push(params.body);
 
+        headers.push('From: =?utf-8?b?U29yb3phdGZpZ3llbMWR?= <' + params.fromEmail + '>');
+        headers.push('To: ' + params.to);
+        headers.push('Content-Type: text/html;charset=UTF-8');
+        headers.push('MIME-Version: 1.0');
+        headers.push('Subject: ' + params.subject);
+        headers.push('');
+        headers.push(params.body);
+
         var email = headers.join('\r\n').trim();
 
         var base64EncodedEmail = new Buffer(email).toString('base64');
