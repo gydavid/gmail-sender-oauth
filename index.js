@@ -16,15 +16,7 @@ exports.send = function (token, params, callback) {
         var gmail = google.gmail('v1');
         var headers = [];
 
-        headers.push('From: ' + params.from);
-        headers.push('To: ' + params.to);
-        headers.push('Content-type: text/html;charset=iso-8859-1');
-        headers.push('MIME-Version: 1.0');
-        headers.push('Subject: ' + params.subject);
-        headers.push('');
-        headers.push(params.body);
-
-        headers.push('From: =?utf-8?b?U29yb3phdGZpZ3llbMWR?= <' + params.fromEmail + '>');
+        headers.push('From: =?utf-8?b?' + new Buffer(params.fromName).toString('base64') + '?= <' + params.fromEmail + '>');
         headers.push('To: ' + params.to);
         headers.push('Content-Type: text/html;charset=UTF-8');
         headers.push('MIME-Version: 1.0');
